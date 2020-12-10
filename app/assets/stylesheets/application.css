@@ -14,3 +14,11 @@
  *= require_tree .
  *= require_self
  */
+
+span.message{
+  color: #cccccc;
+}
+
+a.font{
+  font-size: 50px;
+}

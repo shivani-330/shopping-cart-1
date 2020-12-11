@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_one_attached :image
   after_create :assign_default_role
 
-  def assign_default_role
-    self.add_role(:seller) if self.roles.blank?
-  end
+  private
+
+    def assign_default_role
+      self.add_role(:buyer) if self.roles.blank?
+    end
 end

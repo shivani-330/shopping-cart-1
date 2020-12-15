@@ -13,17 +13,5 @@
         <%= link_to "Edit", edit_product_path(product), :class => "button btn btn-secondary" %>
         <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "button btn btn-danger" %>
       <% end %>
-      <h5><p><b><%= "Add #{product.title} to cart" %></b></p></h5>
-      <%= form_with(model: [product, product.line_items.build], local: true) do |form| %>
-        <p>
-          <%= form.label :quantity %>
-          <%= form.number_field :quantity %>
-        </p>
-
-        <p>
-          <%= form.submit %>
-        </p>
-      <% end %>
-    </p><br><br>
+    </p>
   <% end %>
-</ul>

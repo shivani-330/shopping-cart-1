@@ -38,6 +38,32 @@
     <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
   </div>
 
+  <b>Address:</b>
+  <ul>
+    <%= f.fields_for :address, resource.address do |address_form| %>
+      <li>
+        <%= address_form.label :address1 %>
+        <%= address_form.text_field :address1 %>
+
+        <%= address_form.label :address2 %>
+        <%= address_form.text_field :address2 %>
+
+        <%= address_form.label :city %>
+        <%= address_form.text_field :city %>
+
+        <%= address_form.label :state %>
+        <%= address_form.text_field :state %>
+
+        <%= address_form.label :country %>
+        <%= address_form.text_field :country %>
+
+        <%= address_form.label :postal_code %>
+        <%= address_form.text_field :postal_code %>
+
+      </li>
+    <% end %>
+  </ul>
+
   <div class="form-group">
     <%= f.submit t('.update'), class: 'btn btn-primary' %>
   </div>

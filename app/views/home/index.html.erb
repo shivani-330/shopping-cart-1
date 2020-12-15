@@ -1,0 +1,29 @@
+<center><h2><b>Welcome to Shopping Cart</b></h2></center>
+
+<h2>All Products</h2>
+  <% @products.each do |product| %>
+    <p><b>Title: </b><%= product.title %></p>
+    <p><b>Description: </b><%= product.description %></p>
+    <p><b>Price: </b><%= product.price %></p>
+    <p>
+    </p>
+    <p>
+      <%= link_to "Show", product_path(product), :class => "button btn btn-info" %>
+      <%  if user_signed_in? && current_user.has_role?(:seller) %>
+        <%= link_to "Edit", edit_product_path(product), :class => "button btn btn-secondary" %>
+        <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "button btn btn-danger" %>
+      <% end %>
+      <h5><p><b><%= "Add #{product.title} to cart" %></b></p></h5>
+      <%= form_with(model: [product, product.line_items.build], local: true) do |form| %>
+        <p>
+          <%= form.label :quantity %>
+          <%= form.number_field :quantity %>
+        </p>
+
+        <p>
+          <%= form.submit %>
+        </p>
+      <% end %>
+    </p><br><br>
+  <% end %>
+</ul>

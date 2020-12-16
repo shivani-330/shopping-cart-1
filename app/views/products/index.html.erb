@@ -17,6 +17,11 @@
         <%= link_to "Edit", edit_product_path(product), :class => "button btn btn-secondary" %>
         <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "button btn btn-danger" %>
       <% end %>
-    </p><br>
+      <%= form_for(:line_item, url: order_line_items_path(current_user.latest_order), local: true ) do |form| %>
+        <%= form.hidden_field :product_id, value: product.id %>
+        <%= form.number_field :quantity, value: 1, min: 1 %>
+        <%= form.submit 'Add to cart' %>
+      <% end %>
+      </p><br>
   <% end %>
 </ul>

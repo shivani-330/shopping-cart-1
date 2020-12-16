@@ -10,7 +10,15 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true
   has_many :orders, dependent: :destroy
 
+  def latest_order
+    orders.where(status: 0).first || new_order
+  end
+
   private
+
+  def new_order
+    orders.create(status: 0)
+  end
 
     def assign_default_role
       self.add_role(:buyer) if self.roles.blank?

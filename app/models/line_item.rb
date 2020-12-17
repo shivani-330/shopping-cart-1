@@ -4,6 +4,7 @@ class LineItem < ApplicationRecord
   belongs_to :order
 
   before_save :set_price
+  before_save :set_total_price
 
   def price
     if persisted?
@@ -17,5 +18,9 @@ class LineItem < ApplicationRecord
 
     def set_price
       self[:price] = price
+    end
+
+    def set_total_price
+      self[:price] = quantity * set_price
     end
 end

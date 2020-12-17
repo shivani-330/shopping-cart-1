@@ -5,6 +5,7 @@ class LineItemsController < ApplicationController
     @line_item = @order.line_items.new(line_item_params)
     @line_item.user_id = current_user.id
     @line_item.save
+      redirect_to products_path
   end
 
   private

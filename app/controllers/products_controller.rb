@@ -6,6 +6,15 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def search
+    if params[:search].blank?
+      redirect_to(products_path, alert: "Empty field!") and return
+    else
+      keyword = params[:search]
+      @products = Product.where("title LIKE ?", "%#{keyword}%")
+    end
+  end
+
   def show
   end
 

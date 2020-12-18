@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :line_items
   end
   resource :carts, only: [:show]
+  get '/search' => 'products#search', :as => 'search_page'
 end

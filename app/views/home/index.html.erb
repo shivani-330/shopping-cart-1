@@ -14,4 +14,9 @@
         <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "button btn btn-danger" %>
       <% end %>
     </p>
+    <p>
+      <% if !user_signed_in? %>
+        <%= link_to 'Add to Cart', new_user_session_path, class: 'btn btn-info' %>
+      <% end %>
+    </p>
   <% end %>

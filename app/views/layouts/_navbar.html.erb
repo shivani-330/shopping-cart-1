@@ -15,13 +15,13 @@
       <div class="input-group">
         <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
         <div class="input-group-btn">
-          <%= button_tag "Search", :class => 'btn btn-primary glyphicon glyphicon-search',:name => nil%>
+          <%= button_tag "Search", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
         </div>
       </div>
     <% end %>
 
     <% if user_signed_in? %>
-      <%= link_to "#{current_user.latest_order.line_items.size} items in card and total order price is #{current_user.latest_order.total_price}", carts_path , :class => "button btn btn-secondary mr-2 " %>
+      <%= link_to "#{current_user.latest_order.line_items.size} items in card and total order price is #{current_user.latest_order.total_price}", carts_path , :class => "button btn btn-light mr-2 " %>
       <span class="message mr-2">
         <strong><%= link_to current_user.name %></strong>
       </span>

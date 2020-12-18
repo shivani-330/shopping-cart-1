@@ -1,11 +1,23 @@
 class LineItemsController < ApplicationController
-  before_action :create_order, only:[:create]
+  before_action :create_order, only:[:create, :update, :destroy]
 
   def create
     @line_item = @order.line_items.new(line_item_params)
     @line_item.user_id = current_user.id
     @line_item.save
       redirect_to products_path
+  end
+
+  def update
+    @line_item = @order.line_items.find(params[:id])
+    @line_item.update(line_item_params)
+      redirect_to carts_path
+  end
+
+  def destroy
+    @line_item = @order.line_items.find(params[:id])
+    @line_item.destroy
+    redirect_to carts_path
   end
 
   private

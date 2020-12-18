@@ -1,0 +1,32 @@
+<h1>All Carts Products</h1>
+<div class="col-md-12 col-md-offset-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Product Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.latest_order.line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.product.title %></td>
+          <td><%= line_item.product.price %></td>
+          <td><%= line_item.quantity %></td>
+          <td><%= line_item.price %></td>
+          <td>
+          <%= form_for([line_item.order, line_item]) do |f| %>
+          <%= f.hidden_field :product_id, value: line_item.product.id %>
+          <%= f.number_field :quantity, value: line_item.quantity, min: 1, class: 'form-control' %><br>
+          <%= f.submit "Update Quantity", class: 'btn btn-primary' %>
+          <%= link_to 'Destroy', [line_item.order,line_item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable, :timeout_in => 30.minutes
+         :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable, :timeout_in => 55.minutes
   has_one_attached :image
   after_create :assign_default_role
   has_one :address, :autosave => true, dependent: :destroy
@@ -16,9 +16,9 @@ class User < ApplicationRecord
 
   private
 
-  def new_order
-    orders.create(status: 0)
-  end
+    def new_order
+      orders.create(status: 0)
+    end
 
     def assign_default_role
       self.add_role(:buyer) if self.roles.blank?

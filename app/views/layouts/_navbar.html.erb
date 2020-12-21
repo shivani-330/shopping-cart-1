@@ -10,6 +10,7 @@
         <%= link_to 'Home', products_path, :class => 'navbar-brand btn btn-info'%>
       </li>
     </ul>
+    <%= link_to "Your Orders", orders_path, :class => 'button btn btn-light mr-2' %>
 
     <%= form_tag(search_page_path, :method => "get",  class: 'navbar-form navbar-left mr-2') do %>
       <div class="input-group">

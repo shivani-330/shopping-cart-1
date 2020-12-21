@@ -12,18 +12,16 @@
       </tr>
     </thead>
     <tbody>
-      <% if current_user.latest_order.line_items.present? %>
-        <% @orders.each do |order| %>
-          <tr>
-            <td>
-              <% order.line_items.each do |line_item| %>
-                <%= line_item.product.title %>
-              <% end %>
-            </td>
-            <td><%= order.total_quantity %></td>
-            <td> <span>Rs</span> <%= order.total_price %></td>
-          </tr>
-        <% end %>
+      <% @orders.each do |order| %>
+        <tr>
+          <td>
+            <% order.line_items.each do |line_item| %>
+              <%= line_item.product.title %>
+            <% end %>
+          </td>
+          <td><%= order.total_quantity %></td>
+          <td> <span>Rs</span> <%= order.total_price %></td>
+        </tr>
       <% end %>
     </tbody>
  </table>

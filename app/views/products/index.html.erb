@@ -30,9 +30,7 @@
         <% end %>
       <% else %>
         <p>
-          <% if current_user.has_role?(:buyer) %>
-            <%= link_to 'Add to Cart', new_user_session_path, class: 'btn btn-info' %>
-          <% end %>
+          <%= link_to 'Add to Cart', new_user_session_path, class: 'btn btn-info' %>
         </p>
       <% end %>
       <br>

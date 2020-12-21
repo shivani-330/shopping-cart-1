@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
   resource :carts, only: [:show]
   get '/search' => 'products#search', :as => 'search_page'
+  get '/payment_option' => 'orders#payment_option', :as => 'payment'
+  post 'orders/place_order'
 end

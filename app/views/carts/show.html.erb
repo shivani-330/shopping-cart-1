@@ -2,9 +2,11 @@
 <p align="right">
   <div class="card w-50">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text"><%= link_to "Subtotal(#{current_user.latest_order.line_items.size} item): Rs. #{current_user.latest_order.total_price}", :class => 'btn-outline-secondary' %></p>
-      <%= link_to 'Proceed to Buy', order_path(current_user.latest_order), :class => 'btn btn-secondary mb-2' %>
+      <% if current_user.latest_order.line_items.present? %>
+        <p class="card-text">
+        <%= link_to "Subtotal(#{current_user.latest_order.line_items.size} item): Rs. #{current_user.latest_order.total_price}", :class => 'btn btn-secondary' %></p>
+        <%= link_to 'Proceed to Buy', order_path(current_user.latest_order), :class => 'btn btn-secondary mb-2' %>
+      <% end %>
     </div>
   </div>
 </p>

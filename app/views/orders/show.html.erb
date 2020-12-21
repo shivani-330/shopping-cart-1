@@ -1,0 +1,20 @@
+<h3>Select a delivery address</h3>
+  <p>Is the address you'd like to use displayed below? If so, click the corresponding "Deliver to this address" button. Or you can enter a <%= link_to "edit delivery address", edit_user_registration_path %></p><br><hr>
+
+<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+  <div class="card-header"><h3>Your address detail</h3></div>
+  <div class="card-body">
+    <h5 class="card-title"><%= current_user.name %></h5>
+    <p class="card-text"><p><%= current_user.address.address1 %></p>
+    <p><%= current_user.address.address2 %></p>
+    <p>
+      <%= current_user.address.postal_code %>
+      <%= current_user.address.city %>
+      <%= current_user.address.state %>
+    </p>
+    <p><%= current_user.address.country %></p></p>
+    <%= link_to 'Deliver to this address', payment_path, :class => 'btn btn-lg btn-block btn-warning'%>
+  </div>
+</div>
+
+  

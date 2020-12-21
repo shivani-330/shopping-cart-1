@@ -16,7 +16,7 @@
         <tr>
           <td>
             <% order.line_items.each do |line_item| %>
-              <%= line_item.product.title %>
+              <%= line_item.product.title %><br>
             <% end %>
           </td>
           <td><%= order.total_quantity %></td>

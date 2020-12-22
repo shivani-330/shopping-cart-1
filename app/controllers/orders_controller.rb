@@ -18,9 +18,9 @@ class OrdersController < ApplicationController
   end
 
   def revenue_page
-    @total_price_revenue = Order.joins(line_items: :product).where("products.user_id = ? ", current_user.id).sum("products.price*quantity")
+    @total_price_revenue = Order.joins(line_items: :product).where("products.user_id = ? AND orders.status = ?", current_user.id, 1).sum("products.price*quantity")
 
-    @total_quantity_revenue = Order.joins(line_items: :product).where("products.user_id = ? ", current_user.id).sum("line_items.quantity")
+    @total_quantity_revenue = Order.joins(line_items: :product).where("products.user_id = ? AND orders.status = ?", current_user.id, 1).sum("line_items.quantity")
   end
   
   private

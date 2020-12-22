@@ -1,5 +1,5 @@
 <h3>Select payment mode</h3>
-<%= form_for(:order, url: orders_place_order_path) do |form| %>
+<%= form_for(:order, url: place_order_path) do |form| %>
   <div class="field">
     <%=form.radio_button(:payment_mode, 'COD') %>
     <%= form.label :payment_mode, 'COD' %>

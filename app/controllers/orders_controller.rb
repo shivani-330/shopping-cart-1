@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
   
-  def payment
+  def payment_option
   end
 
   def place_order

@@ -21,11 +21,15 @@
         </div>
       <% end %>
 
-      <%= link_to "Your Orders", orders_path, :class => 'button btn btn-warning mr-2' %>
+      <% if current_user.has_role?(:buyer) %>
+        <%= link_to "Your Orders", orders_path, :class => 'button btn btn-warning mr-2' %>
+      <% else %>
+        <%= link_to "Total revenue", revenue_page_path, :class => 'button btn btn-warning mr-2' %>
+      <% end %>
 
       <% if current_user.latest_order.line_items.present? %>
         <%= link_to "#{current_user.latest_order.line_items.size} items in card and total order price is #{current_user.latest_order.total_price}", carts_path , :class => "button btn btn-warning mr-2 " %>
-      <% else %>
+      <% elsif current_user.has_role?(:buyer) %>
         <%= link_to "No items in cart", products_path, :class => "button btn btn-warning disabled mr-2" %>
       <% end %>
 

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/search' => 'products#search', :as => 'search_page'
   get '/payment_option' => 'orders#payment_option', :as => 'payment'
   post '/place_order' => 'orders#place_order'
+  get '/revenue_page' => 'orders#revenue_page'
 end

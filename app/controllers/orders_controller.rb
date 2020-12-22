@@ -16,6 +16,12 @@ class OrdersController < ApplicationController
     @update_order = current_user.latest_order.update(total_price: @order.total_price, total_quantity: @order.total_quantity, status: 'payment', payment_mode: @initial_order.payment_mode)
     redirect_to orders_path
   end
+
+  def revenue_page
+    @total_price_revenue = Order.joins(line_items: :product).where("products.user_id = ? ", current_user.id).sum("products.price*quantity")
+
+    @total_quantity_revenue = Order.joins(line_items: :product).where("products.user_id = ? ", current_user.id).sum("line_items.quantity")
+  end
   
   private
     def order_params

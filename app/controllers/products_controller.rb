@@ -20,14 +20,13 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = current_user.products.new
   end
 
   def edit
   end
 
   def create
-    # @product = Product.new(product_params)
     @product = current_user.products.new(product_params)
     if @product.save
       redirect_to @product  
@@ -37,7 +36,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    # if @product.update(product_params)
     if current_user.products.update(product_params)
       redirect_to @product
     else

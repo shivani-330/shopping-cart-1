@@ -11,10 +11,9 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    @new_order = Order.new(order_params) 
+    @initial_order = Order.new(order_params)
     @order = current_user.latest_order
-    @update_order = current_user.latest_order.update(total_price: @order.total_price, 
-      status: 'payment', total_quantity: @order.total_quantity, payment_mode: @order.payment_mode)
+    @update_order = current_user.latest_order.update(total_price: @order.total_price, total_quantity: @order.total_quantity, status: 'payment', payment_mode: @initial_order.payment_mode)
     redirect_to orders_path
   end
   

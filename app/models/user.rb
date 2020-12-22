@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :address, :autosave => true, dependent: :destroy
   accepts_nested_attributes_for :address, allow_destroy: true
   has_many :orders, dependent: :destroy
+  has_many :products, dependent: :destroy
 
   def latest_order
     orders.where(status: 0).first || new_order

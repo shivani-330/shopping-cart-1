@@ -1,15 +1,14 @@
 <center><h1>All Carts Products</h1></center><br>
-<p align="right">
-  <div class="card w-50">
-    <div class="card-body">
-      <% if current_user.latest_order.line_items.present? %>
-        <p class="card-text">
-        <%= link_to "Subtotal(#{current_user.latest_order.line_items.size} item): Rs. #{current_user.latest_order.total_price}", :class => 'btn btn-secondary' %></p>
-        <%= link_to 'Proceed to Buy', order_path(current_user.latest_order), :class => 'btn btn-secondary mb-2' %>
-      <% end %>
-    </div>
+<div class="card" style="width: 14rem; background-color: lightgrey;">
+  <div class="card-body">
+    <% if current_user.latest_order.line_items.present? %>
+      <p class="card-text">
+      <%= link_to "Subtotal(#{current_user.latest_order.line_items.size} item): Rs. #{current_user.latest_order.total_price}", :class => 'btn btn-secondary' %></p>
+      <%= link_to 'Proceed to Buy', order_path(current_user.latest_order), :class => 'btn btn-secondary mb-2' %>
+    <% end %>
   </div>
-</p>
+</div><br>
+
 <div class="col-md-12 col-md-offset-12">
   <table class="table">
     <thead>

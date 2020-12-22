@@ -10,16 +10,18 @@
     </thead>
     <tbody>
       <% @orders.each do |order| %>
-        <tr>
-          <td>
-            <% order.line_items.each do |line_item| %>
-              <%= line_item.product.title %>
-              <%= line_item.quantity %>
-            <% end %>
-          </td>
-          <td><%= order.total_quantity %></td>
-          <td> <span>Rs</span> <%= order.total_price %></td>
-        </tr>
+        <% unless order.total_quantity == 0 && order.total_price == 0 && !order.line_items.present? %>
+          <tr>
+            <td>
+              <% order.line_items.each do |line_item| %>
+                <%= line_item.product.title %>=>
+                <%= line_item.quantity %><br>
+              <% end %>
+            </td>
+            <td><%= order.total_quantity %></td>
+            <td> <span>Rs</span> <%= order.total_price %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
  </table>
